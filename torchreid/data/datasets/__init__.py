@@ -18,7 +18,8 @@ __image_datasets = {
     'ilids': iLIDS,
     'sensereid': SenseReID,
     'prid': PRID,
-    'cuhk02': CUHK02
+    'cuhk02': CUHK02,
+    'center': Center
 }
 
 __video_datasets = {
