@@ -316,7 +316,7 @@ class Engine(object):
                 self.datamanager.data_type,
                 width=self.datamanager.width,
                 height=self.datamanager.height,
-                save_dir=osp.join(save_dir, 'visrank_' + dataset_name),
+                save_dir='static/img/result',
                 topk=visrank_topk
             )
 
