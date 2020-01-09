@@ -27,7 +27,7 @@ class Center(ImageDataset):
         train = self.process_dir(self.train_dir)
         query = self.process_dir(self.query_dir)
         gallery = self.process_dir(self.gallery_dir)
-        super(MyDataset, self).__init__(train, query, gallery, **kwargs)
+        super(Center, self).__init__(train, query, gallery, **kwargs)
 
     def process_dir(self, dir_path):
         img_paths = glob.glob(osp.join(dir_path, '*.jpg'))
