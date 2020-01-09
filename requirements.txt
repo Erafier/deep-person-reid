@@ -1,7 +1,7 @@
 numpy
 Cython
 h5py
-Pillow
+Pillow==6.1
 six
 scipy
 opencv-python
