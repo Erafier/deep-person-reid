@@ -14,9 +14,8 @@ BW = 5 # border width
 
 
 def visualize_ranked_results(
-    distmat, dataset, data_type, width=128, height=256, save_dir='', topk=10
+        distmat, dataset, data_type, width=128, height=256, save_dir='', topk=10
 ):
-
     num_q, num_g = distmat.shape
     mkdir_if_missing(save_dir)
     query, gallery = dataset
@@ -107,12 +106,8 @@ def visualize_ranked_results(
                     border_color = (75, 0, 130)
                 if gcamid not in cams:
                     cams.append(gcamid)
-                    print(qimg_path)
-                    print(gcamid)
-                    print(distance)
                     matched = gpid == qpid
                     if data_type == 'image':
-                        # border_color = GREEN if matched else RED
                         gimg = cv2.imread(gimg_path)
                         gimg = cv2.resize(gimg, (width, height))
                         gimg = cv2.copyMakeBorder(
@@ -148,9 +143,11 @@ def visualize_ranked_results(
                     rank_idx += 1
                     if rank_idx > topk:
                         break
-        used_cameras[qimg_path_name.split('/')[-1]] = cams
+        if cams:
+            used_cameras[qimg_path_name.split('/')[-1]] = cams
         if data_type == 'image':
             imname = osp.basename(osp.splitext(qimg_path_name)[0])
-            cv2.imwrite(osp.join(save_dir, imname + '.jpg'), grid_img)
+            print(cv2.imwrite(osp.join(save_dir, imname + '.jpg'), grid_img))
+
     with open('static/reid/cameras.json', 'w') as f:
         json.dump(used_cameras, f)
